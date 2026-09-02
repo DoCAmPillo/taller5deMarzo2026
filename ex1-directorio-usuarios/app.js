@@ -14,12 +14,13 @@ let todosLosUsuarios = [];
 // ---------------------------------------------------
 const cargarUsuarios = async () => {
   try {
+    console.log("Iniciando consulta de usuarios");
+
     const response = await axios.get(API_URL);
     const usuarios = response.data;
 
     todosLosUsuarios = usuarios;
 
-    // LOG 1: resumen de carga
     console.log(`Usuarios cargados: ${usuarios.length}`);
     console.log('Primera fila:', usuarios[0]);
 
@@ -57,11 +58,16 @@ const renderizarTabla = (usuarios) => {
 $('#filtro').on('input', function () {
   const termino = $(this).val().toLowerCase().trim();
 
-  const coincidencias = todosLosUsuarios.filter(({ name }) =>
-    name.toLowerCase().includes(termino)
-  );
+  const coincidencias = todosLosUsuarios
+    .filter((usuario) =>
+      usuario.name.toLowerCase().includes(termino) ||
+      usuario.email.toLowerCase().includes(termino)
+    )
+    .map((usuario) => {
+      const { id, name, email, company } = usuario;
+      return { id, name, email, company };
+    });
 
-  // LOG 2: termino de busqueda y cantidad de coincidencias
   console.log(`Filtro: "${termino}" | Coincidencias: ${coincidencias.length}`);
 
   renderizarTabla(coincidencias);
@@ -78,9 +84,8 @@ $('#tbody-usuarios').on('click', '.fila-usuario', function () {
   if (!usuario) return;
 
   const { name, phone, address } = usuario;  // destructuring
-  const direccionFormato = `${address.street}, ${address.city}`;
+  const direccionFormato = `${address.street}, ${address.suite}, ${address.city}`;
 
-  // LOG 3: detalle del usuario seleccionado
   console.log('Usuario seleccionado:', { name, phone, address: direccionFormato });
 
   $('#detalle-nombre').text(name);
