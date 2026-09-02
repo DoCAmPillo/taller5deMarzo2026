@@ -5,21 +5,25 @@
 body {
   margin: 0;
   min-height: 100vh;
+  padding: 24px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 18px;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #eef2ff, #f8fafc);
   color: #1f2937;
 }
 
 #formCalculadora {
-  width: min(92vw, 420px);
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  width: min(92vw, 560px);
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  padding: 28px 24px;
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(79, 70, 229, 0.14);
   border: 1px solid #e5e7eb;
+  transform: translateY(0);
 }
 
 label {
@@ -33,11 +37,29 @@ input,
 select,
 button {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: 1px solid #d1d5db;
   font-size: 16px;
   margin-bottom: 14px;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  #formCalculadora {
+    width: min(100%, 420px);
+    padding: 20px 16px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
 }
 
 input:focus,
@@ -61,34 +83,58 @@ button:hover {
   box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
 }
 
+#btnLimpiarHistorial {
+  width: min(92vw, 560px);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  margin-bottom: 0;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.18);
+}
+
+#btnLimpiarHistorial:hover {
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.28);
+}
+
 p {
-  width: min(92vw, 420px);
-  margin: 20px auto 10px;
+  width: min(92vw, 560px);
+  margin: 0;
+  padding: 16px 18px;
   font-size: 18px;
   color: #374151;
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+  border: 1px solid #dfe3ff;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.08);
 }
 
 #resultado {
   display: inline-block;
-  min-width: 80px;
+  min-width: 100px;
   color: #111827;
-  font-weight: 700;
+  font-weight: 800;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 4px 10px;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.08);
 }
 
 h3 {
-  width: min(92vw, 420px);
-  margin: 18px auto 10px;
+  width: min(92vw, 560px);
+  margin: 0;
   color: #111827;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 #historial {
-  width: min(92vw, 420px);
-  margin: 0 auto;
-  background-color: #ffffff;
+  width: min(92vw, 560px);
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
   border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 14px 16px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
 }
 
 #historial li {

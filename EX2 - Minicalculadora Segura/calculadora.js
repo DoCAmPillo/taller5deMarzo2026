@@ -4,6 +4,7 @@ const $numero2 = $("#numero2");
 const $operacion = $("#operacion");
 const $resultado = $("#resultado");
 const $historial = $("#historial");
+const $btnLimpiarHistorial = $("#btnLimpiarHistorial");
 
 let historial = JSON.parse(localStorage.getItem("historialCalculadora")) || [];
 
@@ -18,12 +19,20 @@ const actualizarHistorial = () => {
     $historial.append($item);
   });
 
-  console.log("🧾 Historial actual:", historial);
+  console.log(" Historial actual:", historial);
 };
 
 const guardarHistorial = () => {
   localStorage.setItem("historialCalculadora", JSON.stringify(historial));
   actualizarHistorial();
+};
+
+const limpiarHistorial = () => {
+  historial = [];
+  localStorage.removeItem("historialCalculadora");
+  $resultado.text("Historial limpiado");
+  actualizarHistorial();
+  console.log(" Historial limpiado");
 };
 
 const validarEntrada = (valor1, valor2) => {
@@ -58,6 +67,10 @@ const obtenerResultado = (operacionSeleccionada, n1, n2) => {
   }
 };
 
+$btnLimpiarHistorial.on("click", () => {
+  limpiarHistorial();
+});
+
 $formulario.on("submit", (event) => {
   event.preventDefault();
 
@@ -65,7 +78,7 @@ $formulario.on("submit", (event) => {
   const { value: valor2 } = $numero2[0];
   const { value: operacionSeleccionada } = $operacion[0];
 
-  console.log("📥 Entrada recibida:", {
+  console.log(" Entrada recibida:", {
     operacion: operacionSeleccionada,
     numero1: valor1,
     numero2: valor2
@@ -75,12 +88,12 @@ $formulario.on("submit", (event) => {
 
   if (!validacion.ok) {
     $resultado.text(validacion.mensaje);
-    console.log("⚠️ Validación fallida:", {
+    console.log(" Validación fallida:", {
       numero1: valor1,
       numero2: valor2,
       mensaje: validacion.mensaje
     });
-    console.log("🧾 Historial actual:", historial);
+    console.log(" Historial actual:", historial);
     return;
   }
 
@@ -89,13 +102,13 @@ $formulario.on("submit", (event) => {
 
   if (!resultadoCalculado.ok) {
     $resultado.text(resultadoCalculado.mensaje);
-    console.log("⚠️ Validación fallida:", {
+    console.log(" Validación fallida:", {
       operacion: operacionSeleccionada,
       numero1: n1,
       numero2: n2,
       mensaje: resultadoCalculado.mensaje
     });
-    console.log("🧾 Historial actual:", historial);
+    console.log("Historial actual:", historial);
     return;
   }
 
@@ -110,11 +123,11 @@ $formulario.on("submit", (event) => {
   guardarHistorial();
 
   $resultado.text(resultadoCalculado.valor);
-  console.log("✅ Resultado calculado:", {
+  console.log(" Resultado calculado:", {
     entrada: operacionRealizada,
     salida: resultadoCalculado.valor
   });
-  console.log("🧾 Historial actual:", historial);
+  console.log(" Historial actual:", historial);
 });
 
 actualizarHistorial();
