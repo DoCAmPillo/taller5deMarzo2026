@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX1 - Directorio de Usuarios</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Directorio de Usuarios</h1>
+
+      <!-- Filtro en vivo -->
+      <div class="filter-bar">
+        <input
+          type="text"
+          id="filtro"
+          placeholder="Buscar por nombre..."
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Tabla de usuarios -->
+      <div class="table-wrapper">
+        <table id="tabla-usuarios">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Empresa</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-usuarios">
+            <!-- filas renderizadas por jQuery -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Panel de detalle -->
+      <div id="panel-detalle" class="panel-detalle oculto">
+        <button id="btn-cerrar">Cerrar</button>
+        <h2 id="detalle-nombre"></h2>
+        <p><span class="etiqueta">Telefono:</span> <span id="detalle-telefono"></span></p>
+        <p><span class="etiqueta">Direccion:</span> <span id="detalle-direccion"></span></p>
+      </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Logica principal -->
+    <script src="app.js"></script>
+  </body>
+</html>

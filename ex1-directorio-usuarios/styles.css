@@ -1,0 +1,130 @@
+﻿/* =====================================================
+   EX1 - Directorio de Usuarios | styles.css
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+/* Filtro */
+.filter-bar {
+  margin-bottom: 20px;
+}
+
+#filtro {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#filtro:focus {
+  border-color: #3498db;
+}
+
+/* Tabla */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+#tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tabla-usuarios thead th {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+#tabla-usuarios tbody tr {
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+#tabla-usuarios tbody tr:hover {
+  background-color: #eaf4fb;
+}
+
+#tabla-usuarios td {
+  padding: 11px 14px;
+  font-size: 0.95rem;
+}
+
+/* Panel de detalle */
+.panel-detalle {
+  margin-top: 28px;
+  background: #eaf4fb;
+  border-left: 4px solid #3498db;
+  border-radius: 6px;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.panel-detalle.oculto {
+  display: none;
+}
+
+.panel-detalle h2 {
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.panel-detalle p {
+  margin-bottom: 8px;
+  font-size: 0.97rem;
+}
+
+.etiqueta {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+#btn-cerrar {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+#btn-cerrar:hover {
+  background: #c0392b;
+}
